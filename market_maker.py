@@ -473,7 +473,6 @@ class MarketMaker( object ):
         binance_futures = ccxt.binance(
             {"apiKey": key,
             "secret": binApi2[key],
-    'rateLimit': 500,
              'options': {'defaultType': 'future'},
 
     'enableRateLimit': True
@@ -607,7 +606,7 @@ class MarketMaker( object ):
                 for rl in exchange_info['rateLimits']:
                     if rl['rateLimitType'] == 'ORDERS':
                         if rl['interval'] == 'MINUTE' and rl['intervalNum'] == 1 and client.rateLimit != 1.01 * (1000 * (60 / rl['limit'])):
-                            self.orderRateLimit = 1.01 * (1000 * (60 / rl['limit']))
+                            self.orderRateLimit = 2 * (1000 * (60 / rl['limit']))
                             client.rateLimit = self.orderRateLimit
                             print (client.rateLimit)
                             if self.Place_Orders[client.apiKey] is not None:
