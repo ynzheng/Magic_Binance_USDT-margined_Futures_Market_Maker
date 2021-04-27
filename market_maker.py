@@ -4,7 +4,7 @@
 #        toreplace.append(p)
 #    pairs[key] = toreplace
 #pprint(pairs)
-with open('/srv/bot/reqs.txt') as e:
+with open('reqs.txt') as e:
     data = e.read()
 count = 0
 reqs = {}
@@ -606,7 +606,7 @@ class MarketMaker( object ):
                 for rl in exchange_info['rateLimits']:
                     if rl['rateLimitType'] == 'ORDERS':
                         if rl['interval'] == 'MINUTE' and rl['intervalNum'] == 1 and client.rateLimit != 1.01 * (1000 * (60 / rl['limit'])):
-                            self.orderRateLimit = 2 * (1000 * (60 / rl['limit']))
+                            self.orderRateLimit = 1.01 * (1000 * (60 / rl['limit']))
                             client.rateLimit = self.orderRateLimit
                             print (client.rateLimit)
                             if self.Place_Orders[client.apiKey] is not None:

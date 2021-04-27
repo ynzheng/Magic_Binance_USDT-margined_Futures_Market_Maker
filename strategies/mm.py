@@ -1,6 +1,6 @@
 import json
 import urllib
-with open('/srv/bot/reqs.txt') as e:
+with open('reqs.txt') as e:
     data = e.read()
 count = 0
 reqs = {}
