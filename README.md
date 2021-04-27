@@ -80,7 +80,7 @@ The algo has been built with a configurable Take Profit and Stop Loss, expressed
 
 1. Clone or download repo
 2. cd into dir
-3. pip3 install ccxt
+3. pip3 install ccxt python-binance
 4. cp conf.json.ex conf.json
 5. Edit conf.json! (TP and SL are multipled by lev, so 3x lev and 5% TP would exit positions when they achieve an ROI of 15%)
 6. python3 market_maker.py

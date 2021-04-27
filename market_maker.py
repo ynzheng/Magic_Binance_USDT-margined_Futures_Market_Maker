@@ -248,12 +248,12 @@ for symbol in pairs2['symbols']:
     #pprint(normalized)
     bcontracts.append(normalized)
 config = {TICKER: bcontracts}
-
+"""
 from binance.client import Client
 
 
 from binance.websockets import BinanceSocketManager
-"""
+
 #fh.add_feed(BinanceFutures(config=config, callbacks={TICKER: TickerCallback(ticker)}))
 
 #pprint(2)
@@ -1043,18 +1043,16 @@ class MarketMaker( object ):
         self.vols   = OrderedDict( { s: VOL_PRIOR for s in self.symbols } )
         #sleep(10)
         
-        #bin_client = Client(client.apiKey, client.secret)
-       # bm = BinanceSocketManager(bin_client, n=client.apiKey, user_timeout=60)
-        bm = None
-        BinanceSocketManager = None
-        Client = None
+        bin_client = Client(client.apiKey, client.secret)
+        bm = BinanceSocketManager(bin_client,  user_timeout=60)
+        
         # start any sockets here, i.e a trade socket
         #
         
-        #if client.apiKey == firstkey:
-        #    conn_key = bm.start_multiplex_socket(['!bookTicker'], self.process_m_message)
+        if client.apiKey == firstkey:
+            conn_key = bm.start_multiplex_socket(['!bookTicker'], self.process_m_message)
             # then start the socket manager
-        #    bm.start()
+            bm.start()
         self.Place_Orders[client.apiKey] = Place_Orders(BinanceSocketManager, self.process_m_message, Client, random, pprint, firstkey, self.lev, bm, client, multiprocessing, self.brokerKey, self.qty_div, self.orderRateLimit, self.max_skew_mult, self.get_precision, math, self.TP, self.SL, asyncio, sleep, threading, PrintException, ticksize_floor, ticksize_ceil, pairs[client.apiKey], fifteens, tens, fives, threes, self.con_size, self.get_spot, self.equity_btc[client.apiKey], self.positions[client.apiKey], self.get_ticksize, self.vols, self.get_bbo, self.openorders[client.apiKey], self.equity_usd[client.apiKey], self.randomword, self.logger, PCT_LIM_LONG, PCT_LIM_SHORT, DECAY_POS_LIM, MIN_ORDER_SIZE, CONTRACT_SIZE, MAX_LAYERS, BTC_SYMBOL, RISK_CHARGE_VOL, BP)
         alist = []
         for key in pairs.keys():
