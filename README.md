@@ -1,6 +1,12 @@
 # Magic_Binance_USDT-margined_Futures_Market_Maker by Jarett Dunn
 
 
+# Chat
+
+
+https://discord.gg/YtstUhA6PF
+
+
 # Important Note
 
 
